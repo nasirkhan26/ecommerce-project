@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Link from "next/link";
+import { Button, Input } from "antd";
+import Image from "next/image";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -27,7 +30,77 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <header className="w-full shadow-md py-4 border border-gray-200">
+          <nav className="mx-auto max-w-screen-2xl flex justify-between items-center px-10">
+            <div className="flex gap-7 items-center justify-center text-lg text-gray-600">
+              <Link className="hover:text-gray-800 transition-all  ease-in-out hover:border-b-1 hover:border-black" href={"/"}>Home</Link>
+              <Link className="hover:text-gray-800 transition-all  ease-in-out hover:border-b-1 hover:border-black" href={"/shop"}>Shop</Link>
+              <Link className="hover:text-gray-800 transition-all  ease-in-out hover:border-b-1 hover:border-black" href={"/about"}>About</Link>
+              <Link className="hover:text-gray-800 transition-all  ease-in-out hover:border-b-1 hover:border-black" href={"/contact"}>Contact</Link>
+            </div>
+            <div className="">
+              <Link href={"/"} className="font-bold text-2xl">
+                Khpal Store
+              </Link>
+            </div>
+            <div className="flex items-center justify-center gap-3">
+              <Input size="large" allowClear variant="outlined" className="rounded-full" style={{ width: "400px" }} placeholder="Search products" />
+              <Image src="/cart-img.png" alt="" width={38} height={38} />
+            </div>
+          </nav>
+        </header>
+        <main className="w-full">{children}</main>
+        <footer className="mt-12 mx-auto max-w-screen-2xl px-10 grid grid-cols-5">
+          <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-3">
+              <Link href={'/'} className="font-bold text-2xl"><Image src="/cart-img.png" alt="" width={38} height={38} /></Link>
+              <p className="text-sm font-normal text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</p>
+            </div>
+            <div className="flex flex-col gap-4">
+              <h2 className="text-md text-gray-600 font-semibold">Subscribe Now</h2>
+              <Input placeholder="Enter your Email" allowClear className="email-input" />
+              <Button className="subscribe-button ">Subscribe</Button>
+            </div>
+          </div>
+          <div className="">
+            <h2 className="text-md  font-semibold mb-4">Get In Touch</h2>
+            <ul className="text-md font-normal text-gray-600 flex flex-col gap-4">
+              <li><Link href={'/'}>About Us</Link></li>
+              <li><Link href={'/'}>Contact Us</Link></li>
+              <li><Link href={'/'}>Privacy Policy</Link></li>
+              <li><Link href={'/'}>Terms of Use</Link></li>
+            </ul>
+          </div>
+          <div className="">
+            <h2 className="text-md  font-semibold mb-4">Information</h2>
+            <ul className="text-md font-normal text-gray-600 flex flex-col gap-4">
+              <li><Link href={'/'}>About Us</Link></li>
+              <li><Link href={'/'}>Contact Us</Link></li>
+              <li><Link href={'/'}>Privacy Policy</Link></li>
+              <li><Link href={'/'}>Terms of Use</Link></li>
+            </ul>
+          </div>
+          <div className="">
+            <h2 className="text-md  font-semibold mb-4">Follow Us</h2>
+            <ul className="text-md font-normal text-gray-600 flex flex-col gap-4">
+              <li><Link href={'/'}>Facebook</Link></li>
+              <li><Link href={'/'}>Instagram</Link></li>
+              <li><Link href={'/'}>Twitter</Link></li>
+              <li><Link href={'/'}>Linkdin</Link></li>
+            </ul>
+          </div>
+          <div className="">
+            <h2 className="text-md  font-semibold mb-4">Payment Method</h2>
+            <ul className="text-md font-normal text-gray-600 flex gap-4">
+              <li><Link className="hover:text-black" href={'/'}>method 1</Link></li>
+              <li><Link className="hover:text-black" href={'/'}>method 2</Link></li>
+              <li><Link className="hover:text-black" href={'/'}>method 3</Link></li>
+              <li><Link className="hover:text-black" href={'/'}>method 4</Link></li>
+            </ul>
+          </div>
+        </footer>
+      </body>
     </html>
   );
 }
